@@ -4,6 +4,11 @@ export interface GoalCompletionsRepositoryDTO {
   lastDayOfWeek: Date
 }
 
+export interface GetWeekSummaryDTO {
+  firstDayOfWeek: Date
+  lastDayOfWeek: Date
+}
+
 export interface GoalCompletion {
   id: string
   goalId: string
@@ -15,9 +20,22 @@ export interface GoalToBeCompleted {
   completionCount: number
 }
 
+export interface CompletedGoalPerDay {
+  id: string
+  title: string
+  completedAt: Date
+}
+
+export interface Summary {
+  completed: number
+  total: number
+  goalsPerDay: CompletedGoalPerDay[]
+}
+
 export interface GoalsCompletionsRepository {
   create: (goalId: string) => Promise<GoalCompletion>
   getGoalCompletionsByGoalId: (
     data: GoalCompletionsRepositoryDTO
   ) => Promise<GoalToBeCompleted>
+  getWeekSummary: (data: GetWeekSummaryDTO) => Promise<Summary>
 }
