@@ -3,8 +3,8 @@ import { db } from '../../db'
 import { goals, goalsCompletions } from '../../db/schema'
 import type {
   CreateGoalDTO,
+  GetWeekPendingGoalsDTO,
   GoalsRepository,
-  PendingGoals,
 } from '../goals-repository'
 
 export class DrizzleGoalsRepository implements GoalsRepository {
@@ -22,7 +22,10 @@ export class DrizzleGoalsRepository implements GoalsRepository {
     return goal
   }
 
-  async getWeekPendingGoals(firstDayOfWeek: Date, lastDayOfWeek: Date) {
+  async getWeekPendingGoals({
+    firstDayOfWeek,
+    lastDayOfWeek,
+  }: GetWeekPendingGoalsDTO) {
     // $with => para criar uma "Comumon Table Expression" (CTE), que é uma expressão/sub-consulta que pode ser reutilizada em outras consultas SQL.
 
     const goalsCreatedUpToWeek = db.$with('goals_created_up_to_week').as(

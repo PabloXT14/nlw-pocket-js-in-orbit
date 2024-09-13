@@ -1,8 +1,7 @@
 import { db } from '@/db'
-import { goals, goalsCompletions } from '@/db/schema'
+import { goalsCompletions } from '@/db/schema'
 import type { GoalsCompletionsRepository } from '@/repositories/goals-completions-repository'
 import dayjs from 'dayjs'
-import { and, count, eq, gte, lte, sql } from 'drizzle-orm'
 import { GoalAlreadyCompletedError } from './errors/goal-already-completed-error'
 
 interface GoalsCompletionsUseCaseRequest {

@@ -3,6 +3,11 @@ export type CreateGoalDTO = {
   desiredWeeklyFrequency: number
 }
 
+export type GetWeekPendingGoalsDTO = {
+  firstDayOfWeek: Date
+  lastDayOfWeek: Date
+}
+
 export type Goal = {
   id: string
   title: string
@@ -19,8 +24,5 @@ export type PendingGoals = {
 
 export interface GoalsRepository {
   create: (data: CreateGoalDTO) => Promise<Goal>
-  getWeekPendingGoals: (
-    firstDayOfWeek: Date,
-    lastDayOfWeek: Date
-  ) => Promise<PendingGoals[]>
+  getWeekPendingGoals: (data: GetWeekPendingGoalsDTO) => Promise<PendingGoals[]>
 }

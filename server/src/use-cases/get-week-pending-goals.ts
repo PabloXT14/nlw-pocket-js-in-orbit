@@ -15,10 +15,10 @@ export class GetWeekPendingGoalsUseCase {
     const firstDayOfWeek = dayjs().startOf('week').toDate()
     const lastDayOfWeek = dayjs().endOf('week').toDate()
 
-    const pendingGoals = await this.goalsRepository.getWeekPendingGoals(
+    const pendingGoals = await this.goalsRepository.getWeekPendingGoals({
       firstDayOfWeek,
-      lastDayOfWeek
-    )
+      lastDayOfWeek,
+    })
 
     return { pendingGoals }
   }
