@@ -20,16 +20,19 @@ export interface GoalToBeCompleted {
   completionCount: number
 }
 
-export interface CompletedGoalPerDay {
-  id: string
-  title: string
-  completedAt: Date
-}
+export type CompletedGoalPerDay = Record<
+  string,
+  {
+    id: string
+    title: string
+    completedAt: Date
+  }[]
+>
 
 export interface Summary {
   completed: number
   total: number
-  goalsPerDay: CompletedGoalPerDay[]
+  goalsPerDay: CompletedGoalPerDay
 }
 
 export interface GoalsCompletionsRepository {

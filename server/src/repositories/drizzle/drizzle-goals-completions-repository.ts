@@ -4,8 +4,6 @@ import type {
   GetWeekSummaryDTO,
   GoalCompletionsRepositoryDTO,
   GoalsCompletionsRepository,
-  GoalToBeCompleted,
-  Summary,
 } from '../goals-completions-repository'
 import { goals, goalsCompletions } from '@/db/schema'
 import { and, count, eq, gte, lte, sql } from 'drizzle-orm'
@@ -121,7 +119,7 @@ export class DrizzleGoalsCompletionsRepository
         total: sql /*sql*/`
           (SELECT SUM(${goalsCreatedUpToWeek.desiredWeeklyFrequency}) FROM ${goalsCreatedUpToWeek})
         `.mapWith(Number),
-        goalsPerDay: sql /*sql*/<CompletedGoalPerDay[]>`
+        goalsPerDay: sql /*sql*/<CompletedGoalPerDay>`
           JSON_OBJECT_AGG(
             ${goalsCompletedByWeekDay.completedAtDate},
             ${goalsCompletedByWeekDay.completions}
