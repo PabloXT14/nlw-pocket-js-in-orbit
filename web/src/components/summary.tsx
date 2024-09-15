@@ -8,6 +8,7 @@ import { OutlineButton } from './ui/outline-button'
 import { useQuery } from '@tanstack/react-query'
 import { getSummary } from '../http/get-summary'
 import dayjs from 'dayjs'
+import { PendingGoals } from './pending-goals'
 
 export const Summary = () => {
   const { data: summary } = useQuery({
@@ -69,28 +70,7 @@ export const Summary = () => {
 
       <Separator />
 
-      {/* Pending Goals */}
-      <div className="flex gap-3 flex-wrap">
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Meditar
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Nadar
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Praticar exercícios
-        </OutlineButton>
-
-        <OutlineButton>
-          <Plus className="size-4 text-zinc-600" />
-          Caminhar
-        </OutlineButton>
-      </div>
+      <PendingGoals />
 
       {/* Completed Goals */}
       <div className="flex flex-col gap-6">
