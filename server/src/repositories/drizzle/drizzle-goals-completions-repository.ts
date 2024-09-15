@@ -6,7 +6,7 @@ import type {
   GoalsCompletionsRepository,
 } from '../goals-completions-repository'
 import { goals, goalsCompletions } from '@/db/schema'
-import { and, count, eq, gte, lte, sql } from 'drizzle-orm'
+import { and, count, desc, eq, gte, lte, sql } from 'drizzle-orm'
 
 export class DrizzleGoalsCompletionsRepository
   implements GoalsCompletionsRepository
@@ -108,6 +108,7 @@ export class DrizzleGoalsCompletionsRepository
         })
         .from(goalsCompletedInWeek)
         .groupBy(goalsCompletedInWeek.completedAtDate)
+        .orderBy(desc(goalsCompletedInWeek.completedAtDate))
     )
 
     const result = await db
