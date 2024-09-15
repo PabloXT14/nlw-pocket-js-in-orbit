@@ -35,7 +35,7 @@
 <p align="center">
  <a href="#-about">About</a> | 
  <a href="#-layout">Layout</a> | 
- <a href="#-api_documentation">API Documentation</a> | 
+ <a href="#-api-documentation">API Documentation</a> | 
  <a href="#-setup">Setup</a> | 
  <a href="#-technologies">Technologies</a> | 
  <a href="#-license">License</a>
